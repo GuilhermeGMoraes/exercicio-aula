@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício Idade</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="idade.js"></script>
+</head>
+<body>
+    <header id="topo-site">
+        <div id="topo-conteudo">
+                <div id="logo">
+                        <figure>
+                            <img src="/img/LOGO.png" width="70px" height="70px" alt="Logo">
+                        </figure>
+                </div>
+                    <nav>
+                        <ul>
+                            <li>
+                                <a id="login" href="/exercicio.html"><h3>Voltar</h3></a>
+                            </li>
+                        </ul>
+                    </nav>
+         </div>
+     </header>
+      <main>
+        <article>
+            <h3>Informe sua idade: </h3>
+            <input placeholder="Informe idade" id="idade" value="18" class="form-control text-input"/>
+
+            <button onclick="valor()">Resultado</button>
+     
+            <p id="demo"></p>
+     
+            <script>
+             function valor() {
+             let idade = document.getElementById("idade").value;
+             let voteable = (idade < 18) ? " Menor":" Maior ";
+             document.getElementById("demo").innerHTML = voteable + " de idade";
+              }
+            </script>
+        </article>
+      </main>
+     </body>
+     </html>

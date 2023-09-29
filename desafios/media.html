@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Média</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        p{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body><header id="topo-site">
+    <div id="topo-conteudo">
+            <div id="logo">
+                    <figure>
+                        <img src="/img/LOGO.png" width="70px" height="70px" alt="Logo">
+                    </figure>
+            </div>
+                <nav>
+                    <ul>
+                        <li>
+                            <a id="login" href="/exercicio.html"><h3>Voltar</h3></a>
+                        </li>
+                    </ul>
+                </nav>
+     </div>
+ </header>
+    <main>
+        <article>
+            <h3>Informe as notas para saber a média:</h3>
+        <input type="text" id="n1" placeholder="Informe nota" />
+        <input type="text" id="n2" placeholder="Informe nota" />
+        <input type="text" id="n3" placeholder="Informe nota" />
+         <button onclick="calcular()">Calcular Média</button><p>
+         </p>
+    
+         <p><h4>Média inteira: <span id="resInt"></span></h4></p>
+         <p><h4>Média decimal: <span></span></h4></p>
+         <p id="text"></p>
+         <p><h3>Informe frequência:</h3></p>
+        <input type="text" id="freq" placeholder="" />
+        <button onclick="calcular1()">Calcular Frequencia</button><p></p>
+        <p><h4>Frequência: </h4></p>
+         <p id="text1"></p>
+         
+        </article>
+    </main>
+         <script>
+            function calcular(){
+                let nota1 = parseInt(document.getElementById("n1").value)
+                let nota2 = parseInt(document.getElementById("n2").value)
+                let nota3 = parseInt(document.getElementById("n3").value)
+                let resultado = (nota1 + nota2 + nota3) / 3
+                document.getElementById('resInt').innerHTML = resultado
+    
+                let f1 = parseFloat(document.getElementById("n1").value)
+                let f2 = parseFloat(document.getElementById("n2").value)
+                let f3 = parseFloat(document.getElementById("n3").value)
+                resultado = (f1 + f2 + f3) /3
+                document.getElementsByTagName('span')[1].innerHTML = resultado.toFixed(2) 
+
+                if(resultado >= 7){
+                    text.innerHTML = "Média aprovada!";
+                }
+                if (resultado < 7) {
+                    text.innerHTML = "Média Reprovada";
+                }
+            }
+         </script> 
+         <script>
+            function calcular1(){
+            let frequencia = parseInt(document.getElementById("freq").value)
+            let resultado2 = frequencia / 100
+            if(resultado2 >= 0.75){
+                text1.innerHTML = resultado2 + "%, Boa frequência";
+            }
+            if(resultado2 < 0.75){
+                text1.innerHTML = resultado2 + "%, Baixa frequência";
+            }
+           
+            }
+        </script>
+</body>
+</html>

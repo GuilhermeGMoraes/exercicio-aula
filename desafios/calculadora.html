@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="/style.css">
+<body>
+    <header id="topo-site">
+        <div id="topo-conteudo">
+                <div id="logo">
+                        <figure>
+                            <img src="/img/LOGO.png" width="70px" height="70px" alt="Logo">
+                        </figure>
+                </div>
+                    <nav>
+                        <ul>
+                            <li>
+                                <a id="login" href="/exercicio.html"><h3>Voltar</h3></a>
+                            </li>
+                        </ul>
+                    </nav>
+         </div>
+     </header>
+</head>
+
+    <div>
+        <input type="text" id="display">
+        <div>
+            <div class="btn-toolbar d-flex flex-column justify-content-center align-items-center" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mt-2" role="group" aria-label="First group">
+                  <button onclick="inserir(this)"type="button" class="btn btn-dark">1</button>
+                  <button onclick="inserir(this)"type="button" class="btn btn-dark">2</button>
+                  <button onclick="inserir(this)"type="button" class="btn btn-dark">3</button>
+                  <button onclick="inserir(this)"type="button" class="btn btn-dark">4</button>
+                  <button onclick="inserir(this)"type="button" class="btn btn-dark">5</button>
+                  <button onclick="inserir(this)"type="button" class="btn btn-dark">6</button>
+                  <button onclick="inserir(this)"type="button" class="btn btn-dark">7</button>
+                  <button onclick="inserir(this)"type="button" class="btn btn-dark">8</button>
+                  <button onclick="inserir(this)"type="button" class="btn btn-dark">9</button>
+                  <button onclick="inserir(this)"type="button" class="btn btn-dark">0</button>
+                </div>
+                <div class="btn-group my-2" role="group" aria-label="Third group">
+                  <button onclick="definirOperacao(this)"class="btn btn-light">+</button>
+                  <button onclick="definirOperacao(this)"class="btn btn-light">-</button>
+                  <button onclick="definirOperacao(this)"class="btn btn-light">*</button>
+                  <button onclick="definirOperacao(this)"class="btn btn-light">/</button>
+                  <button onclick="calcular()"class="btn btn-light">=</button>
+                </div>
+            </div></p>
+    </div>
+    <script>
+
+        var n1 = 0
+        var n2 = 0
+        var op = ''
+
+        function inserir(item){
+          document.getElementById('display').value +=  item.innerHTML
+        }
+
+        function definirOperacao(item){
+           //definir a operação
+           op = item.innerHTML
+           
+           //pegar o primeiro membro da operação
+           let display = document.getElementById('display')
+           n1 = parseFloat(display.value)
+    
+           //zerar o display
+           display.value = ''
+        }
+
+        function calcular(){
+            let display = document.getElementById('display')
+            n2 = parseFloat(display.value)
+           
+            let resultado = 0
+            //realizar o calculo
+            switch(op){
+                case '+': resultado = n1 + n2; break;
+                case '-': resultado = n1 - n2; break;
+                case '*': resultado = n1 * n2; break;
+                case '/': resultado = n1 / n2; break;
+            }
+
+            display.value = resultado
+        }
+
+    </script>
+</body>
+</html>

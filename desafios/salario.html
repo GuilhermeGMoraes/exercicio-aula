@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header id="topo-site">
+        <div id="topo-conteudo">
+            <div id="logo">
+                <figure>
+                    <img src="/img/LOGO.png" width="70px" height="70px" alt="Logo">
+                </figure>
+            </div>
+
+            <nav>
+                <ul>
+                    <li>
+                        <a id="login" href="/exercicio.html">
+                            <h3>Voltar</h3>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+<main>
+    <article>
+    <h3>Reajuste Salárial</h3>
+    <div>
+            <h4>Informe cargo e salário:</h4>    
+    </div>
+    <div>
+            <input type="radio" name="cargo" id="gerente"/>
+            <label for="gerente">Gerente</label>
+            <input type="radio" name="cargo" id="surpervisor"/>
+            <label for="supervisor">Supervisor</label>
+            <input type="radio" name="cargo" id="operador"/>
+            <label for="operador">Operador</label>
+            <input type="radio" name="cargo" id="colaborador" />
+            <label for="outro">Outros colaboradores</label>
+        <p>
+            <label for="salario">Informe salario: </label>
+            <input type="text" id="salario" placeholder="Informe salário" />
+    </div>
+    <div>
+        <button onclick="calcular()">Calcular Reajuste</button>
+    </div>
+    <div>
+        <p id="text"></p>
+    </div>
+    </article>
+</main>
+    <script>
+        function calcular() {
+            var ge = document.querySelector("#gerente")
+            var su = document.querySelector("#surpervisor")
+            var op = document.querySelector("#operador")
+            var co = document.querySelector("#colaborador")
+            var sal = parseFloat(document.getElementById("salario").value);
+
+            if (ge.checked) { 
+                var aumento = (sal * 0.05)
+                var novosalario = (sal + aumento).toFixed(2)
+                document.getElementById("text").innerHTML = "Novo Salário: " + novosalario + ", Salário Atual: " + sal + ", Aumento: 5%";
+            }
+            if (su.checked) {
+                var aumento = (sal * 0.08)
+                var novosalario = (sal + aumento).toFixed(2)
+                document.getElementById("text").innerHTML = "Novo Salário: " + novosalario + ", Salário Atual: " + sal + ", Aumento: 8%";
+            }
+            if (op.checked) {
+                var aumento = (sal * 0.09)
+                var novosalario = (sal + aumento).toFixed(2)
+                document.getElementById("text").innerHTML = "Novo Salário: " + novosalario + ", Salário Atual: " + sal + ", Aumento: 9%";
+            }
+            if (co.checked) {
+                var aumento = (sal * 0.10)
+                var novosalario = (sal + aumento).toFixed(2)
+                document.getElementById("text").innerHTML = "Novo Salário: " + novosalario + ", SalÁrio Atual: " + sal + ", Aumento: 10%";
+            }
+
+        }
+    </script>
+</body>
+
+</html>

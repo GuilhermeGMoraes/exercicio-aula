@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cesta de Frutas</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <header id="topo-site">
+        <div id="topo-conteudo">
+            <div id="logo">
+                <figure>
+                    <img src="/img/LOGO.png" width="70px" height="70px" alt="Logo">
+                </figure>
+            </div>
+
+            <nav>
+                <ul>
+                    <li>
+                        <a id="login" href="/exercicio.html">
+                            <h3>Voltar</h3>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+    <article>
+    <div>
+        <label for="fruta">Informe nome de fruta</label>
+        <input type="text" id="fruta" placeholder="Informe nome da fruta" >
+        <button onclick="inserir()">Inserir</button>   
+    </div>
+    <p>
+    <button onclick="carregar()">Carregar</button>
+    <ul>
+    </ul>
+   <hr>
+   <button onclick="carregarEmtabela()">Carregar em tabela</button>
+    <table>
+        <thead>
+            <th>
+                <td>Descrição</td>
+                <td>Ações</td>
+            </th>
+        </thead>
+        <tbody>  
+        </tbody>
+    </table>
+    <hr>
+    </article>
+    </main>
+    <script>
+        const fruits = ["Banana", "Orange", "Apple", "Mango"];        
+
+        function inserir(){
+            let novaFruta = document.getElementById('fruta')
+
+            if(novaFruta.value == ''){
+                alert("É preciso informar o nome da fruta")
+                novaFruta.focus()
+                return
+            }
+
+            let indice = fruits.indexOf(novaFruta.value)
+            alert(indice)
+            if( indice != -1){
+                alert("Esta fruta já foi informada")
+                novaFruta.focus()
+                return  
+            }
+
+            fruits.push(novaFruta.value)
+            novaFruta.value = ''
+        }
+
+        function carregar(){
+            let i = 0
+            let itens = ''
+            while(i < fruits.length){
+              itens += `<li>${fruits[i]}</li>`
+               i++  
+            } 
+            document.getElementsByTagName("ul")[0].innerHTML = itens
+        }
+
+        function carregarEmtabela(){
+            let i = 0
+            let itens = ''
+            while(i < fruits.length){
+              itens += `<tr>
+                        <td>${fruits[i]}</td> 
+                        <td><button onclick=excluir('${fruits[i]}')>Excluir</button></td>
+                      </tr>`
+               i++  
+            } 
+            document.getElementsByTagName("tbody")[0].innerHTML = itens
+        }
+
+        function excluir(item){
+            let indice = fruits.indexOf(item)
+            fruits.splice(indice,1)
+            carregarEmtabela()
+        }
+        
+        function frutaJaExiste(item){
+            let size = fruits.length
+            for(let i = 0; i < size ; i++){
+                if(fruits[i] == item){
+                    return true
+                }
+            }
+            return false
+        }
+    </script>
+</body>
+</html>
